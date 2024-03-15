@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record model="ir.ui.view" id="order_management_form_view">
+            <field name="name">order_management.order</field>
+            <field name="model">order_management.order</field>
+            <field name="arch" type="xml">
+                <form string="Order">
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                            <field name="customer_id"/>
+<!--                            <field name="total_amount"/>-->
+                        </group>
+                        <notebook>
+                            <page string="Order Lines">
+                                <field name="order_lines">
+                                    <tree>
+                                        <field name="product_id"/>
+                                        <field name="quantity"/>
+                                        <field name="price_unit"/>
+<!--                                        <field name="price_subtotal"/>-->
+                                    </tree>
+                                </field>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+    </data>
+</odoo>

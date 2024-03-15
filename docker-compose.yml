@@ -1,0 +1,33 @@
+version: '3'
+services:
+ odoo:
+   container_name: "odoo-web"
+   image: odoo:15.0 #image of the odoo
+#   env_file: .env #environment file(contains odoo environment)
+   environment:
+     - HOST=postgres
+     - USER=odoo
+     - PASSWORD=123456
+   depends_on:
+     - postgres
+   ports:
+     - "8000:8069" #port mapping
+   volumes: #mapping directory
+     - data:/var/lib/odoo
+     - ./config:/etc/odoo
+     - ./extra-addons:/mnt/extra-addons
+ postgres:
+   container_name: "postgres-odoo-15"
+   image: postgres:13 #postgres image
+   ports:
+
+     - "5432:5432" #port mapping
+   environment:
+     - POSTGRES_DB=postgres
+     - POSTGRES_PASSWORD=123456
+     - POSTGRES_USER=odoo
+#   volumes:
+#     - db:/var/lib/postgresql/data/pgdata
+volumes:
+ data:
+ db:
